@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizar Conteúdo - Privato</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+        .content-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .content-header {
+            margin-bottom: 30px;
+        }
+        .content-title {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        .creator-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .creator-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+        .content-main {
+            margin-top: 30px;
+        }
+        .content-description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        .content-media {
+            width: 100%;
+            max-width: 100%;
+            margin-bottom: 30px;
+        }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+        .video-container iframe,
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .audio-container {
+            width: 100%;
+            margin: 20px 0;
+        }
+        .document-container {
+            width: 100%;
+            min-height: 600px;
+            border: 1px solid #ddd;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="/">Privato</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="user-dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="profile.html">Perfil</a>
+                    </li>
+                </ul>
+                <button class="btn btn-outline-light" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> Sair
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="content-container">
+        <div class="content-header">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="user-dashboard.html">Dashboard</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Visualizar Conteúdo</li>
+                </ol>
+            </nav>
+            <h1 class="content-title" id="content-title">Carregando...</h1>
+            <div class="creator-info">
+                <img src="/images/default-avatar.svg" alt="Avatar do Criador" class="creator-avatar" id="creator-avatar">
+                <div>
+                    <h5 id="creator-name">Carregando...</h5>
+                    <small class="text-muted" id="content-date">Carregando...</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-main">
+            <p class="content-description" id="content-description">Carregando...</p>
+            
+            <!-- Container dinâmico para o conteúdo -->
+            <div id="content-container"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Privato</h5>
+                    <p>Sua plataforma de conteúdo exclusivo</p>
+                </div>
+                <div class="col-md-6 text-end">
+                    <p>&copy; 2024 Privato. Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/view-content.js"></script>
+</body>
+</html>

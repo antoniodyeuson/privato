@@ -1,0 +1,82 @@
+# Dependências
+node_modules/
+package-lock.json
+yarn.lock
+
+# Arquivos de build
+dist/
+build/
+*.min.js
+*.min.css
+
+# Arquivos de ambiente
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# IDEs e editores
+.idea/
+.vscode/
+*.swp
+*.swo
+*.swn
+*.bak
+*.sublime-workspace
+*.sublime-project
+
+# Cache
+.cache/
+.temp/
+.tmp/
+.sass-cache/
+
+# Arquivos de teste
+coverage/
+.nyc_output/
+
+# Arquivos de configuração local
+*.local.js
+*.local.json
+
+# Arquivos gerados automaticamente
+.generated/
+auto-imports.d.ts
+components.d.ts
+
+# Dependências específicas do frontend
+bower_components/
+
+# Arquivos de mapa fonte
+*.map
+
+# Arquivos temporários
+*.tmp
+*.temp
+.DS_Store
+Thumbs.db
+
+# Arquivos de backup
+*.bak
+*.backup
+*~
+
+# Arquivos de debug
+debug.log
+debug.json
+
+# Arquivos de configuração específicos do usuário
+.npmrc
+.yarnrc
+.env*.local

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil do Criador - Privato</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="/">Privato</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="user-dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="profile.html">Perfil</a>
+                    </li>
+                </ul>
+                <button class="btn btn-outline-light" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> Sair
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <!-- Creator Info -->
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <div class="creator-profile-card">
+                    <img id="creator-avatar" src="images/default-avatar.svg" alt="Avatar do Criador" class="creator-avatar mb-3">
+                    <h2 id="creator-name" class="mb-2"></h2>
+                    <p id="creator-bio" class="text-muted"></p>
+                    <div class="creator-stats mt-3">
+                        <div class="stat">
+                            <i class="fas fa-photo-video"></i>
+                            <span id="content-count">0</span> Conteúdos
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-users"></i>
+                            <span id="followers-count">0</span> Seguidores
+                        </div>
+                    </div>
+                    <div class='badges-section'>
+                        <h5><i class='fas fa-medal'></i> Conquistas</h5>
+                        <div id='badgesContainer' class='badges-grid'></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-8">
+                <!-- Creator's Content -->
+                <div class="content-section">
+                    <h3>Conteúdos Disponíveis</h3>
+                    <div id="creator-content" class="row g-4">
+                        <!-- Content items will be dynamically added here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Privato</h5>
+                    <p>Sua plataforma de conteúdo exclusivo</p>
+                </div>
+                <div class="col-md-6 text-end">
+                    <p>&copy; 2024 Privato. Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/creator-profile.js"></script>
+</body>
+</html>

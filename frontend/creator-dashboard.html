@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard do Criador - Privato</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="css/dashboard.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Privato</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#"><i class="fas fa-home"></i> Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-photo-video"></i> Meus Conteúdos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-users"></i> Assinantes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-chart-line"></i> Analytics</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <span class="text-light me-3" id="userWelcome">Bem-vindo!</span>
+                    <button class="btn btn-outline-light" id="logout">
+                        <i class="fas fa-sign-out-alt"></i> Sair
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="row">
+            <!-- Área Principal -->
+            <div class="col-md-8">
+                <!-- Resumo -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="mb-0"><i class="fas fa-chart-bar"></i> Resumo</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="stats-item mb-3">
+                                    <h6>Total de Assinantes</h6>
+                                    <h3 id="totalSubscribers">0</h3>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="stats-item mb-3">
+                                    <h6>Total de Conteúdos</h6>
+                                    <h3 id="totalContent">0</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Conteúdos Recentes -->
+                <div class="card mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0"><i class="fas fa-photo-video"></i> Meus Conteúdos</h5>
+                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addContentModal">
+                            <i class="fas fa-plus"></i> Novo Conteúdo
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="row" id="contentGrid">
+                            <div class="col-12 text-center">
+                                <p>Carregando conteúdos...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class='analytics-section mt-5'>
+                  <h4><i class='fas fa-chart-line'></i> Estatísticas de Desempenho</h4>
+                  <canvas id='analyticsChart'></canvas>
+                </div>
+            </div>
+
+            <!-- Barra Lateral -->
+            <div class="col-md-4">
+                <!-- Perfil -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="mb-0"><i class="fas fa-user"></i> Meu Perfil</h5>
+                    </div>
+                    <div class="card-body">
+                        <h4 id="profileUsername">Carregando...</h4>
+                        <button class="btn btn-outline-primary btn-sm mt-2">
+                            <i class="fas fa-edit"></i> Editar Perfil
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Assinantes Recentes -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="mb-0"><i class="fas fa-users"></i> Assinantes Recentes</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="recentSubscribers">
+                            <p class="text-center">Carregando assinantes...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Adicionar Conteúdo -->
+    <div class="modal fade" id="addContentModal" tabindex="-1" aria-labelledby="addContentModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addContentModalLabel">Adicionar Novo Conteúdo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addContentForm" class="content-form" novalidate>
+                        <div class="mb-3">
+                            <label for="newContentTitle" class="form-label">Título</label>
+                            <input type="text" class="form-control" id="newContentTitle" name="title">
+                            <div class="invalid-feedback">Por favor, insira um título.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="newContentDescription" class="form-label">Descrição</label>
+                            <textarea class="form-control" id="newContentDescription" name="description" rows="3"></textarea>
+                            <div class="invalid-feedback">Por favor, insira uma descrição.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="newContentPrice" class="form-label">Preço (R$)</label>
+                            <input type="number" class="form-control" id="newContentPrice" name="price" step="0.01" min="0">
+                            <div class="invalid-feedback">Por favor, insira um preço válido.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="newContentFile" class="form-label">Arquivo</label>
+                            <input type="file" class="form-control" id="newContentFile" name="file" accept="image/jpeg,image/png,image/gif,video/mp4,video/webm">
+                            <div class="invalid-feedback">Por favor, selecione um arquivo.</div>
+                            <div class="form-text">Formatos suportados:</div>
+                            <div class="form-text">- Imagens: jpg, jpeg, png, gif</div>
+                            <div class="form-text">- Vídeos: mp4, webm</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="newContentTags" class="form-label">Tags (opcional)</label>
+                            <input type="text" class="form-control" id="newContentTags" name="tags" placeholder="Separe as tags por vírgula">
+                            <div class="form-text">Ex: arte, digital, tutorial</div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="submitContent">
+                        <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                        Publicar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Editar Conteúdo -->
+    <div class="modal fade" id="editContentModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Editar Conteúdo</h5>
+                    <button type="button" class="btn-close" onclick="closeEditModal()"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editContentForm">
+                        <input type="hidden" id="editContentId">
+                        <div class="mb-3">
+                            <label for="editContentTitle" class="form-label">Título</label>
+                            <input type="text" class="form-control" id="editContentTitle" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editContentDescription" class="form-label">Descrição</label>
+                            <textarea class="form-control" id="editContentDescription" rows="3" required></textarea>
+                            <div id="editContentModeration" class="form-text"></div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editContentPrice" class="form-label">Preço (R$)</label>
+                            <input type="number" class="form-control" id="editContentPrice" min="0" step="0.01" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editContentTags" class="form-label">Tags</label>
+                            <input type="text" class="form-control" id="editContentTags">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeEditModal()">Cancelar</button>
+                    <button type="button" class="btn btn-primary" onclick="saveContentEdit()">Salvar Alterações</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/config.js"></script>
+    <script src="js/creator-dashboard.js"></script>
+    <script src="js/loyalty.js"></script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de Conteúdo - Privato</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/content-manager.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="dashboard-body">
+    <nav class="sidebar">
+        <!-- Mantendo a mesma sidebar do dashboard -->
+        <div class="sidebar-header">
+            <div class="logo">Privato</div>
+        </div>
+        <ul class="sidebar-menu">
+            <li>
+                <a href="dashboard.html"><i class="fas fa-home"></i> Visão Geral</a>
+            </li>
+            <li class="active">
+                <a href="#content"><i class="fas fa-photo-video"></i> Conteúdo</a>
+            </li>
+            <li>
+                <a href="#earnings"><i class="fas fa-dollar-sign"></i> Ganhos</a>
+            </li>
+            <li>
+                <a href="#messages"><i class="fas fa-envelope"></i> Mensagens</a>
+            </li>
+            <li>
+                <a href="#analytics"><i class="fas fa-chart-bar"></i> Analytics</a>
+            </li>
+            <li>
+                <a href="#settings"><i class="fas fa-cog"></i> Configurações</a>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="dashboard-main">
+        <header class="dashboard-header">
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Pesquisar conteúdo...">
+            </div>
+            <div class="user-menu">
+                <div class="notifications">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge">3</span>
+                </div>
+                <div class="profile">
+                    <img src="https://via.placeholder.com/40" alt="Profile" class="avatar">
+                    <span class="username">Creator Name</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="content-manager">
+            <div class="content-header">
+                <h2>Gerenciador de Conteúdo</h2>
+                <button class="btn-upload" id="uploadButton">
+                    <i class="fas fa-plus"></i> Novo Conteúdo
+                </button>
+            </div>
+
+            <div class="content-filters">
+                <div class="filter-group">
+                    <label>Tipo:</label>
+                    <select>
+                        <option value="all">Todos</option>
+                        <option value="image">Imagens</option>
+                        <option value="video">Vídeos</option>
+                        <option value="text">Textos</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Ordenar por:</label>
+                    <select>
+                        <option value="recent">Mais Recentes</option>
+                        <option value="popular">Mais Populares</option>
+                        <option value="earnings">Maior Faturamento</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Status:</label>
+                    <select>
+                        <option value="all">Todos</option>
+                        <option value="published">Publicados</option>
+                        <option value="draft">Rascunhos</option>
+                        <option value="scheduled">Agendados</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="content-grid" id="contentGrid">
+                <!-- Conteúdo será preenchido via JavaScript -->
+            </div>
+        </div>
+
+        <!-- Modal de Upload -->
+        <div class="upload-modal" id="uploadModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Novo Conteúdo</h3>
+                    <button class="close-modal" id="closeModal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="upload-area" id="uploadArea">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Arraste arquivos aqui ou clique para selecionar</p>
+                        <input type="file" id="fileInput" multiple hidden>
+                    </div>
+                    <div class="upload-form">
+                        <div class="form-group">
+                            <label>Título</label>
+                            <input type="text" placeholder="Digite um título para seu conteúdo">
+                        </div>
+                        <div class="form-group">
+                            <label>Descrição</label>
+                            <textarea placeholder="Descreva seu conteúdo"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Categoria</label>
+                            <select>
+                                <option value="">Selecione uma categoria</option>
+                                <option value="photos">Fotos</option>
+                                <option value="videos">Vídeos</option>
+                                <option value="articles">Artigos</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Preço</label>
+                            <input type="number" placeholder="R$ 0,00" min="0" step="0.01">
+                        </div>
+                        <div class="form-group">
+                            <label>Tags</label>
+                            <input type="text" placeholder="Adicione tags separadas por vírgula">
+                        </div>
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox">
+                                <span>Conteúdo Premium</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn-secondary" id="saveDraft">Salvar Rascunho</button>
+                    <button class="btn-primary" id="publishContent">Publicar</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/content-manager.js"></script>
+</body>
+</html>
